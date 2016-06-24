@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load my_tags %}
+{% block head %}
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static "jquery-ui.css" %}">
+    <script src="{% static "jquery-1.10.2.js" %}"></script>
+    <script src="{% static "jquery-ui.js" %}"></script>
+    <link rel="stylesheet" href="{% static "ticket.css" %}">
+    <style>
+        .ui-datepicker {
+            font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
+            font-size: 75%;
+        }
+
+        .train-result .item .title{
+            width: auto !important;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+{% endblock %}
+{% block left_content %}
+    {% if reserve_ticket %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ reserve_ticket }}
+        <input type="submit" value="search"/>
+    </form>
+    {% endif %}
+    <div class="search-result">
+        {{ reserve_error }}
+        {% if result != 0 and result != 1 and result != None %}
+            <div class="train-result">
+                {% for elm in result %}
+                    <div class="item">
+                        <span class="emj">&gt;</span>
+                        <span class="title">title: {{ elm.train_title }}</span>
+                        <span class="title">number: {{ elm.train_number }}</span>
+                        <span class="title">price: {{ elm.price }}</span>
+                        <span class="title">degree: {{ elm.degree }}</span>
+                        <span class="title">time: {{ elm.time|time:"H:i" }}</span>
+                    <div class="text" style="display: none">
+                        <form name="reserve" method="post">
+                            {% csrf_token %}
+                            <input type="text" value="{{ elm.id }}" name="train_id" style="display: none;">
+                            {{ num_of_tickets }}
+                            <input type="submit">
+                        </form>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elif result == 0 %}
+            موردی یافت نشد!
+        {% elif result == 1 %}
+            رزرو شد. برای نمایش جزییات کامل بلیط به <a href="{% url 'profile' %}">پروفایل</a> مراجعه کنید
+        {% endif %}
+
+    </div>
+{% endblock %}
+{% block right_content %}
+    {% include "right_content_block.html" %}
+{% endblock %}

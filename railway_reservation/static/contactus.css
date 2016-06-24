@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    direction: ltr;
+    background: url(http://uupload.ir/files/vnm7_img13442326.jpg);
+    background-size: cover;
+    width: 900px;
+    margin: 0 auto;
+}
+
+header .top {
+    height: 35px;
+    background: #000;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 30px;
+    padding-left: 30px;
+    color: #fff;
+}
+
+header .welcome {
+}
+
+header .date {
+    float: right;
+    margin-right: 30px
+}
+
+nav {
+    max-width: 960px;
+    /* The mask-image gives us some extra fading. It is not necessary but without this, you can't face out the box-shadows. This clips our menu */
+    mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+    margin: 0 auto;
+    /* Using padding instead of margin for the top and bottom here will keep our box-shadow visible and not affected by the mask-image */
+
+}
+
+nav ul {
+    text-align: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 0, 0) 100%);
+    width: 100%;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    padding: 20px;
+    font-family: "Robto", serif;
+    color: rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 3px 1px rgba(0, 255, 0, 0.4);
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul li a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 225, 255, 0.6);
+    background: rgba(255, 225, 255, 0.1);
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.left {
+    float: left;
+    width: 65%;
+    background: rgba(70, 225, 122, 0.5);
+    margin-top: 30px;
+    Height: 320px;
+    padding: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5), inset 0 0 1px rgba(255, 255, 255, 0.6);
+
+}
+
+.right {
+    float: right;
+    width: 31%;
+    margin-top: 30px;
+
+}
+
+.helptext {
+    display: none
+}
+
+label {
+    display: none
+}
+
+.widget {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    width: 100%;
+}
+
+/* Form Module */
+.form-module {
+    position: relative;
+    border-top: 5px solid #33b5e5;
+}
+
+.form-module .toggle {
+    cursor: pointer;
+    position: absolute;
+    top: -0;
+    right: -0;
+    background: #33b5e5;
+    width: 30px;
+    height: 30px;
+    margin: -5px 0 0;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.form-module .form {
+    padding: 40px;
+}
+
+.form-module h2 {
+    margin: 0 0 20px;
+    color: #33b5e5;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.form-module input {
+    outline: none;
+    display: block;
+    width: 100%;
+    border: 1px solid #d9d9d9;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    font-weight: 400;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    color: #000;
+}
+
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #000;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #000;
+}
+
+:-ms-input-placeholder {
+    color: #000;
+}
+
+.form-module input:focus {
+    border: 1px solid #33b5e5;
+    color: #333333;
+}
+
+.form-module button {
+    cursor: pointer;
+    background: #33b5e5;
+    width: 100%;
+    border: 0;
+    padding: 10px 15px;
+    color: #ffffff;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.form-module button:hover {
+    background: #178ab4;
+}
+
+.form-module .helptext {
+    display: none
+}
+
+.form-module label {
+    display: none
+}
+
+.form-module br {
+    display: none
+}
+
+.right-error {
+    color: red;
+}
+
+.profile-info {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.left .news .item, .left .train-result .item {
+    background: rgba(255, 255, 255, 0.2);
+    font-family: monospace;
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    border: 5px solid rgba(255, 255, 255, .3);
+    cursor: pointer;
+
+}
+
+.left .news .item .emj, .left .train-result .item .emj {
+    padding: 0 12px 0 0
+}
+
+.left .news .item .title, .left .train-result .item .title {
+    padding: 0 12px 0 0;
+    width: 75%;
+    display: inline-block
+}
+
+.left .news .item .date {
+    float: right
+}
+
+.left .news .item .text, .left .news .train-result .text {
+    padding: 15px 18px 7px 15px;
+    text-align: justify;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+ul.errorlist li {
+    color: blue;
+    list-style: none;
+    padding-bottom: 8px;
+}
+
+.profile-info {
+    margin: auto;
+    background: rgba(0, 0, 0, 0.2);
+    color: blue;
+    width: 300px;
+    text-align: center
+}
+
+.item {
+    background: rgba(0, 17, 0, 0.3);
+    padding: 5px;
+    background: #33CCCC;
+    color: #F12345;
+    margin-bottom: 2px;
+    border: 5px solid rgba(255, 255, 255, .3);
+    font-size: 15px;
+}
+
+.item a {
+    color: #fff;
+}
+
+.profile-info .welcome {
+
+    border: 5px solid rgba(255, 255, 255, .3);
+    font-size: 30px;
+    color: #FF0033;
+}
+
+input {
+
+    background-color: #FFFFCC;
+    padding: 6px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    width: 250px;
+    height: 30px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 14px;
+    border: 1px solid #82aee8;
+
+    border-radius: 15px;
+    -moz-box-shadow: 0 1px 1px #82aee8 inset;
+    -webkit-box-shadow: 0 1px 1px #82aee8 inset;
+    box-shadow: 0 1px 1px #82aee8 inset;
+}
+
+textarea {
+    background-color: #FFFFCC;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    width: 350px;
+    height: 2px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 14px;
+    border: 3px solid #82aee8;
+
+    border-radius: 15px;
+    -moz-box-shadow: 0 1px 1px #82aee8 inset;
+    -webkit-box-shadow: 0 1px 1px #82aee8 inset;
+    box-shadow: 0 1px 1px #82aee8 inset;
+}

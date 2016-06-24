@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load my_tags %}
+{% block head %}
+        <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static  "jquery-ui.css" %}">
+    <script src="{% static "jquery-1.10.2.js" %}"></script>
+    <script src="{% static "jquery-ui.js" %}"></script>
+    <link rel="stylesheet" href="{% static  "profile.css" %}">
+    <style>
+        .ui-datepicker {
+            font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana", "sans-serif";
+            font-size: 75%;
+        }
+
+        .train-result .item .title{
+            width: auto !important;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+{% endblock %}
+{% block left_content %}
+    <script>
+    function printTicket(inf)
+    {
+        code0 = '<!DOCTYPE html>\
+                <html lang="en">\
+                <head>\
+                    <meta charset="UTF-8">\
+                    <title>Print Ticket</title>\
+                </head>\
+                <body>';
+        code1 = ' </body></html>';
+        code3 = '';
+        for(var i = 0;i<inf.length;i++)
+        {
+            code3 += (inf[i]+"<br>")
+        }
+        var wnd = window.open("about:blank");
+        wnd.document.write(code0+code3+code1);
+
+    }
+    </script>
+    <div class="profile-data" style="float:left;width: 30%;">
+    {% for key,value in profile_data.items %}
+            <div class="profile-data-item"> {{ key }} : {{ value }}</div>
+    {% endfor %}
+    <br>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ edit_form }}
+        <input type="submit">
+    </form>
+    </div>
+    <div class="tickets" style="float:right;width: 55%;">
+        {% for ticket in tickets %}
+            <div class="ticket">
+                train:  {{ ticket.train.origin }} - {{ ticket.train.destination }}<br>
+                Departure time: {{ ticket.train.time|time:"H:i" }}<br>
+                date:  {{ ticket.train.date }}<br>
+                adult: {{ ticket.number_of_adult }}<br>
+                child: {{ ticket.number_of_child }}<br>
+                seat number: {{ ticket.seat_number }} - {{ ticket.seat_number|add:ticket.number_of_adult|add:ticket.number_of_child|sub:1 }}<br>
+                reserved time: {{ ticket.reserve_time|date:"y-m-d H:i" }}
+                <form method="post">
+                    {% csrf_token %}
+                    <input name="cancel-ticket" type="text" style="display: none;" value="{{ ticket.id }}">
+                    <input type="submit" value="cancel">
+                </form>
+            <input type="button" value="print" onclick="printTicket(['{{ ticket.train.date }}','{{ ticket.train.degree }}','{{ ticket.train.destination }}','{{ ticket.train.number_of_coupe_per_wagon }}','{{ ticket.train.number_of_wagons }}','{{ ticket.train.origin }}','{{ ticket.train.price }}','{{ ticket.train.time }}','{{ ticket.train.train_number }}','{{ ticket.train.train_title }}','{{ ticket.number_of_adult }}','{{ ticket.number_of_child }}','{{ ticket.reserve_time }}','{{ ticket.seat_number }}'])">
+            </div>
+            <hr>
+        {% endfor %}
+    <br><br>
+    {% if questions %}
+    answered questions:<br>
+    {% for question in questions %}
+        title: {{ question.title }} <br>
+        question: {{ question.question }}<br>
+        answer: {{ question.ans }}<br>
+        <hr>
+    {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
+
+{% block right_content %}
+    {% include "right_content_block.html" %}
+{% endblock %}

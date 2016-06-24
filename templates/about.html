@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'about.css' %}">
+{% endblock %}
+{% block left_content %}
+    <h1>About</h1>
+    <div class="about-text">
+        about us!
+    </div>
+{% endblock %}
+{% block right_content %}
+    {% include "right_content_block.html" %}
+{% endblock %}

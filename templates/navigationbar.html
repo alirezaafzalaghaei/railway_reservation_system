@@ -1,0 +1,24 @@
+{% block navigationbar %}
+<nav>
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">خانه</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'ticket' %}">رزرو بلیط</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'home' %}">ثبت نام</a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="{% url 'about' %}">درباره ما</a>
+            </li>
+            <li>
+                <a href="{% url 'contact' %}">تماس با ما</a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load jformat %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'news.css' %}">
+{% endblock %}
+{% block left_content %}
+    <div class="error">
+        {{ not_found_error }}
+    </div>
+    <div class="news">
+        {% for key,val in new_info.items %}
+            {% if key == "date" %}
+                <div class="{{ key }}">{{ key }} : {{ val }}</div>
+            {% else %}
+                <div class="{{ key }}">{{ key }} : {{ val }}</div>
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block right_content %}
+    {% include "right_content_block.html" %}
+{% endblock %}

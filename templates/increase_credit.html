@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'inc_credit.css' %}">
+{% endblock %}
+{% block left_content %}
+    <div class="error">{{ error }}</div>
+    {% if form %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit">
+    </form>
+    {% endif %}
+{% endblock %}
+
+{% block right_content %}
+{% include "right_content_block.html" %}
+{% endblock %}

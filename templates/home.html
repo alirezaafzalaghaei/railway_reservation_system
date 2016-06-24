@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load jformat %}
+{% load staticfiles %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+{% block left_content %}
+    <div class="news">
+        {% for item in news %}
+            <div class='item'><span class="emj">></span><span class="title">{{ item.title }}</span><span
+                    class="date">{{ item.date|jformat:"%d %b %Y" }}</span>
+                <div class="text" style="display: none;">{{ item.text|urlize }}<br>
+                    <a href="/news/{{ item.id }}">مشاهده کامل خبر</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block right_content %}
+{% include "right_content_block.html" %}
+{% endblock %}

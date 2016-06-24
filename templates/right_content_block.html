@@ -1,0 +1,50 @@
+{% if not user.is_authenticated %}
+    <div class="module form-module widget">
+        <div class="toggle"></div>
+        <div class="form">
+            <h2>ورود ب حساب کاربری</h2>
+
+            <div class="right-error">{{ login_err }}</div>
+            <form method="post">
+                {% csrf_token %}
+                {{ login_form }}
+                <button type="submit">ورود</button>
+            </form>
+            <div class="item"><span class="text"><a href="{% url 'change_password' %}">کلمه ی عبور را فراموش کرده ام</a></span></div>
+        </div>
+    </div>
+    <div class="module form-module widget">
+        <div class="toggle"></div>
+        <div class="form">
+            <h2>ثبت نام</h2>
+
+            <div class="right-error">{{ reg_err }}</div>
+            <form method="post">
+                {% csrf_token %}
+                {{ register_form }}
+                <button type="submit">ثبت نام</button>
+            </form>
+        </div>
+    </div>
+{% else %}
+    <div class="profile-info widget">
+        <span class="welcome">
+            {% if user.first_name and user.last_name %}
+                {{ user.first_name }} {{ user.last_name }}
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+             خوش آمدید
+        </span>
+        {% if user.is_superuser and user.is_staff %}
+            <div class="item"><span class="text"><a href="{% url 'admin:index' %}">پنل مدیر</a></span></div>
+        {% endif %}
+        <div class="item"><span class="text"><a href="{% url 'ticket' %}">خرید بلیط</a></span></div>
+        <div class="item"><span class="text"><a href="{% url 'increase_credit' %}">افزایش اعتبار</a></span></div>
+        <div class="item"><span class="text"><a href="{% url 'change_password' %}">تغییر رمز عبور</a></span></div>
+        <div class="item"><span class="text"><a href="{% url 'profile' %}">پروفایل</a></span></div>
+        <div class="item"><span class="text"><a href="{% url 'logout' %}">خروج از سیستم</a></span></div>
+
+    </div>
+{% endif %}
+
